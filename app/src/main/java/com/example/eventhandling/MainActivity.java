@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText; // TextView?
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,26 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+        // Event handling: (1) add event listener (2) callback method.
+        // cf boilerplate event code above
+        Button new_button = findViewById(R.id.new_button);
+
+        new_button.setOnClickListener(new Button.OnClickListener()
+              {
+                  public void onClick(View v)
+                  {
+                      // callback listener
+                      EditText pnjText = findViewById(R.id.pnjText);
+                      pnjText.setText(R.string.clicked);
+                      Snackbar.make(v, R.string.clicked, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                      // NB snackbar to display info to user
+                  }
+              }
+        );
+        // NB above pattern for event listening and callback
+
     }
 
     @Override
