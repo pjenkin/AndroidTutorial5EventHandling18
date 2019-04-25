@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText; // TextView?
+import android.view.View.OnLongClickListener;       // import this especially for OnlongClick to work?
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
               }
         );
         // NB above pattern for event listening and callback
+
+        new_button.setOnLongClickListener(new Button.OnLongClickListener()
+
+            {
+                // :-z lost loads of time after typing public boolean OnLongClick (View v)(sic) NB *O*nLongClick
+                // messages included, e.g. "cannot find symbol class OnLongClick", and "anonymous class derived from OnLongClickListener must ..."
+                public boolean onLongClick(View v)      // :-z lost loads of time after typing public boolean OnLongClick (View v)(sic) NB *O*nLongClick
+                {
+                    // this is the callback
+                    EditText pnjText = findViewById(R.id.pnjText);
+                    pnjText.setText(R.string.long_clicked);
+                    Snackbar.make(v, R.string.long_clicked, Snackbar.LENGTH_INDEFINITE).setAction("Will this appear anywhere?", null).show();
+                    return true;
+                }
+            });
+
 
     }
 

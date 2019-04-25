@@ -4,4 +4,5 @@
     <string name="name">Hello</string>
     <string name="button_text">Click here</string>
     <string name="clicked">Clicked</string>
+    <string name="long_clicked">Cliiiiiicked</string>
 </resources>
